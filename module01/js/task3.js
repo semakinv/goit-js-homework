@@ -1,5 +1,5 @@
 function myFunction3() {
-  const country = 'Южная Америка ';
+  const country = 'Южная Индия';
   switch (country) {
     case 'Индия':
       console.log(`Доставка в ${country} будет стоить 100 кредитов`);
