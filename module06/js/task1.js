@@ -16,8 +16,27 @@
 ('use strict');
 
 class Notepad {
+  /* Замени метод getNotes геттером, чтобы можно было обратиться как notepad.notes,
+   * для этого создай свойство _notes, в котором храни массив заметок,
+   * а геттер notes возвращает значение этого поля
+   */
+  constructor(notes) {
+    this._notes = notes;
+  }
+  get notes() {
+    return this._notes;
+  }
+
+  //* Добавь статическое свойство Priority используя ключевое слово static
+
+  static Priority = {
+    LOW: 0,
+    NORMAL: 1,
+    HIGH: 2,
+  };
+
   //    * Перенеси свойства и методы конструктора в класс
-  saveNote = function(note) {
+  saveNote(note) {
     //     /*
     //      * Сохраняет заметку в массив notes
     //      * Принимает: объект заметки
@@ -25,8 +44,8 @@ class Notepad {
     //      */
     this.notes.push(note);
     return note;
-  };
-  findNoteById = function(id) {
+  }
+  findNoteById(id) {
     /*
      * Ищет заметку в массиве notes
      *
@@ -39,8 +58,8 @@ class Notepad {
         return this.notes[i];
       }
     }
-  };
-  updateNotePriority = function(id, priority) {
+  }
+  updateNotePriority(id, priority) {
     /*
      * Обновляет приоритет заметки
      *
@@ -53,9 +72,9 @@ class Notepad {
     }
     note.priority = priority;
     return note;
-  };
+  }
 
-  filterNotesByQuery = function(query) {
+  filterNotesByQuery(query) {
     /*
      * Фильтрует массив заметок по подстроке query.
      * Если значение query есть в заголовке или теле заметки - она подходит
@@ -77,9 +96,9 @@ class Notepad {
       }
     }
     return filtered;
-  };
+  }
 
-  filterNotesByPriority = function(priority) {
+  filterNotesByPriority(priority) {
     /*
      * Фильтрует массив заметок по значению приоритета
      * Если значение priority совпадает с приоритетом заметки - она подходит
@@ -94,8 +113,8 @@ class Notepad {
       }
     }
     return filtered;
-  };
-  updateNoteContent = function(id, updatedContent) {
+  }
+  updateNoteContent(id, updatedContent) {
     /*
      * Обновляет контент заметки
      * updatedContent - объект с полями вида {имя: значение, имя: значение}
@@ -113,8 +132,8 @@ class Notepad {
       note[Object.keys(updatedContent)[i]] = Object.values(updatedContent)[i];
     }
     return note;
-  };
-  deleteNote = function(id) {
+  }
+  deleteNote(id) {
     /*
      * Удаляет заметку по идентификатору из массива notes
      *
@@ -127,31 +146,10 @@ class Notepad {
         return;
       }
     }
-  };
-
-  /* Замени метод getNotes геттером, чтобы можно было обратиться как notepad.notes,
-   * для этого создай свойство _notes, в котором храни массив заметок,
-   * а геттер notes возвращает значение этого поля
-   */
-  constructor(notes) {
-    this._notes = notes;
   }
-  get notes() {
-    return this._notes;
-  }
-
-  //* Добавь статическое свойство Priority используя ключевое слово static
-
-  static Priority = {
-    LOW: 0,
-    NORMAL: 1,
-    HIGH: 2,
-  };
 }
 
 // ==============================================
-
-console.log(Notepad.notes);
 
 // Далее идет код для проверки работоспособности класса и созданного экземпляра, вставь его в конец скрипта. Твоя реализация класса Notepad должна проходить этот тест.
 
