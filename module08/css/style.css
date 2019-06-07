@@ -1,0 +1,16 @@
+.wrapper {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+  margin: 10px;
+}
+
+.list-item {
+  list-style: none;
+}
+.button-style {
+  display: block;
+  height: 30px;
+  position: relative;
+  border: 1px solid black;
+  margin: 0 auto;
+}
