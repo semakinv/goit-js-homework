@@ -19,18 +19,8 @@ const arrayRightAnswers = []; //массив правильных ответов
 questArray.forEach((copyOfQestion, idx) => {
   const answers = copyOfQestion.choices.reduce(
     (acc, currentItem, index) =>
-      acc +
-      '<li>' +
-      '<label>' +
-      '<input type="radio" name="' +
-      idx +
-      '" value="' +
-      index +
-      '" />' +
-      currentItem +
-      '</label >' +
-      '</li>',
-    '<!--Answers list --> ',
+      `${acc}<li><label><input type="radio" name="${idx}" value="${index}"/>${currentItem}</label ></li>`,
+    '<!--Answers list-->',
   );
 
   //=============
@@ -74,7 +64,7 @@ function handleSubmitRadio(event) {
   }
   return userAnswersArray;
 }
-
+const testResultMessage = document.createElement('p');
 //Функционал оценки прохождения теста
 qestForm.addEventListener('submit', handleSubmit);
 function handleSubmit(event) {
@@ -85,17 +75,15 @@ function handleSubmit(event) {
       score += 100 / arrayRightAnswers.length;
     }
   }
+
   if (Math.round(score) >= 80) {
-    confirm(
-      `Your score is ${Math.round(
-        score,
-      )} % 'Test passed!!! Congratulations!!!'`,
-    );
+    testResultMessage.textContent = `Your score is ${Math.round(
+      score,
+    )} % Test passed!!! Congratulations!!!`;
   } else {
-    confirm(
-      `Your score is ${Math.round(
-        score,
-      )} % Test not passed!!! To successfully pass the test you need to score 80% or more. Try again.`,
-    );
+    testResultMessage.textContent = `Your score is ${Math.round(
+      score,
+    )} % Test not passed!!! To successfully pass the test you need to score 80% or more. Try again.`;
   }
+  body.append(testResultMessage);
 }
